@@ -171,7 +171,7 @@ void mmpx_scalex2(const uint32_t* srcBuffer, uint32_t* dst, uint32_t srcWidth, u
             }
 
             const int dstIndex = ((srcX + srcX) + (srcY << 2) * srcWidth) >> 0;
-            uint32_t* dstPacked = (uint32_t*)dst + dstIndex;
+            uint32_t* dstPacked = dst + dstIndex;
 
             *dstPacked = J; dstPacked++;
             *dstPacked = K; dstPacked += srcWidth + meta.srcMaxX;
