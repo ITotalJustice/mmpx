@@ -6,7 +6,7 @@ This code is from the `C++` benchmark example, just slightly modified for `C`. M
 
 ## Examples
 
-few examples taken from my [SMS emulator](https://github.com/ITotalJustice/TotalSMS).
+Few examples taken from my [SMS emulator](https://github.com/ITotalJustice/TotalSMS).
 
 Left is nearest x2, right is MMPX x2.
 
