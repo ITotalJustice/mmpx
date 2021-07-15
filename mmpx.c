@@ -44,7 +44,7 @@ static inline bool none_eq4(uint32_t B, uint32_t A0, uint32_t A1, uint32_t A2, u
     return B != A0 && B != A1 && B != A2 && B != A3;
 }
 
-static inline uint32_t clamp(uint32_t v, uint32_t min, uint32_t max)
+static inline int clamp(int v, int min, int max)
 {
     return v < min ? min : min > max ? max : v;
 }
@@ -58,10 +58,10 @@ struct Meta
     uint32_t srcMaxY;
 };
 
-static inline uint32_t src(const struct Meta* meta, uint32_t x, uint32_t y)
+static inline uint32_t src(const struct Meta* meta, int x, int y)
 {
     // Clamp to border
-    if ((uint32_t)(x) > (uint32_t)(meta->srcMaxX) || (uint32_t)(y) > (uint32_t)(meta->srcMaxY))
+    if ((uint32_t)x > (uint32_t)meta->srcMaxX || (uint32_t)y > (uint32_t)meta->srcMaxY)
     {
         x = clamp(x, 0, meta->srcMaxX);
         y = clamp(y, 0, meta->srcMaxY);
@@ -82,7 +82,7 @@ static struct Meta build_meta(const uint32_t* srcBuffer, uint32_t srcWidth, uint
     };
 }
 
-void mmpx_scalex2(const uint32_t* srcBuffer, uint32_t* dst, uint32_t srcWidth, uint32_t srcHeight)
+void mmpx_scale2x(const uint32_t* srcBuffer, uint32_t* dst, int srcWidth, int srcHeight)
 {
     const struct Meta meta = build_meta(srcBuffer, srcWidth, srcHeight);
 
@@ -170,7 +170,7 @@ void mmpx_scalex2(const uint32_t* srcBuffer, uint32_t* dst, uint32_t srcWidth, u
                 } // 2:1 slope
             }
 
-            const int dstIndex = ((srcX + srcX) + (srcY << 2) * srcWidth) >> 0;
+            const uint32_t dstIndex = ((srcX + srcX) + (srcY << 2) * srcWidth) >> 0;
             uint32_t* dstPacked = dst + dstIndex;
 
             *dstPacked = J; dstPacked++;

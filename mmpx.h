@@ -9,4 +9,4 @@
 #include <stdint.h>
 
 
-void mmpx_scalex2(const uint32_t* srcBuffer, uint32_t* dst, uint32_t srcWidth, uint32_t srcHeight);
+void mmpx_scale2x(const uint32_t* srcBuffer, uint32_t* dst, uint32_t srcWidth, uint32_t srcHeight);
